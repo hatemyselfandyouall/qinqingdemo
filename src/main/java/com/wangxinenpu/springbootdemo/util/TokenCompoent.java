@@ -2,6 +2,7 @@ package com.wangxinenpu.springbootdemo.util;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.parser.Feature;
+import com.wangxinenpu.springbootdemo.util.crypto.SM3Util;
 import com.wangxinenpu.springbootdemo.vo.ResultVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class TokenCompoent {
         String result=parameters.toString();
         System.out.println(result);
         log.info(result);
-        String signature = MD5Util.md5Password(result).toUpperCase();
+        String signature = SM3Util.encode(result).toUpperCase();
         parameters.remove("secret");
         return signature;
     }
