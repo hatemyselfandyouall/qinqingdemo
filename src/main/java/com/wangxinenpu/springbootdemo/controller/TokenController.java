@@ -19,7 +19,7 @@ public class TokenController {
     @Autowired
     TokenCompoent tokenCompoent;
 
-    @ApiOperation(value = "题目列表")
+    @ApiOperation(value = "获取token")
     @RequestMapping(value = "/getToken",method = RequestMethod.GET,produces = {"application/json;charset=UTF-8"})
     public ResultVo<String> getQuestionList(){
         ResultVo resultVo=new ResultVo();
@@ -28,8 +28,8 @@ public class TokenController {
             resultVo.setSuccess(true);
             resultVo.setResult(token);
         }catch (Exception e){
-            resultVo.setResultDes("获取题目列表异常");
-            log.error("获取题目列表异常",e);
+            resultVo.setResultDes("获取token异常");
+            log.error("获取token异常",e);
         }
         return resultVo;
     }
